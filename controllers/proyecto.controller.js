@@ -27,10 +27,9 @@ function obtenerProyectos(){
 
 function obtenerProyectoPorID(id){
     id = parseInt(id);
-    const proyectoEncontrado = arrProyectos.find((proyecto) =>{
-        proyecto.id === id;
+    const proyectoEncontrado = arrProyectos.find((proyecto) => {
+        return proyecto.id == id;
     });
-
     return proyectoEncontrado;
 }
 
@@ -49,8 +48,11 @@ function crearProyecto(name, description, startDate, endDate, status, teamMember
     return nuevoProyecto;
 }
 
-function editarProyecto(proyectoActualizado){
-    proyectoActualizado.id = parseInt(proyectoActualizado.id);
+function editarProyecto(id, proyectoActualizado){
+    proyectoActualizado.id = parseInt(id);
+    if(obtenerProyectoPorID(id) == null)
+        return null;
+
     arrProyectos = arrProyectos.map((t) => (t.id === proyectoActualizado.id ? proyectoActualizado : t));
     return proyectoActualizado;
 }
@@ -58,13 +60,12 @@ function editarProyecto(proyectoActualizado){
 function eliminarProyecto(id){
     const _id = parseInt(id);
     const proyectoEliminado = obtenerProyectoPorID(_id);
-    console.log("Proyecto a eliminar" + proyectoEliminado);
     arrProyectos = arrProyectos.filter((proyecto) => proyecto.id !== _id);
     return proyectoEliminado;
 }
 
 function newID() {
-    const maxID = tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) : 0;
+    const maxID = arrProyectos.length > 0 ? Math.max(...arrProyectos.map(t => t.id)) : 0;
     return maxID + 1;
 }
 
