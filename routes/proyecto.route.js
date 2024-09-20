@@ -33,7 +33,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
     const proyectoEliminado = controladorProyecto.eliminarProyecto(id);
-    proyectoEliminado != null ? res.status(200).json(proyectoEliminado) : res.status(404).json({ "code": 404, "message": "Elemento no encontrado" });
+    proyectoEliminado ? res.status(200).json(proyectoEliminado) : res.status(404).json({ "code": 404, "message": "Elemento no encontrado" });
 });
 
 module.exports = router;
