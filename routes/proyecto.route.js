@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 
 // Buscando un proyecto por id
 router.get('/:id', (req, res) => {
-    const id = req.params.id;
+    const {id} = req.params;
     const proyectoBuscado = controladorProyecto.obtenerProyectoPorID(id);
     proyectoBuscado ? res.status(200).json(proyectoBuscado) : res.status(404).json({ "code": 404, "message": "Elemento no encontrado" });
 });
@@ -25,7 +25,8 @@ router.post('/', (req, res) => {
 
 // Editar un proyecto
 router.put('/:id', (req, res) => {
-    const proyectoActualizado = controladorProyecto.editarProyecto(req.body);
+    const id = req.params.id;
+    const proyectoActualizado = controladorProyecto.editarProyecto(id,req.body);
     proyectoActualizado ? res.status(201).json(proyectoActualizado) : res.status(404).json({ "code": 404, "message": "Elemento no encontrado" });
 });
 
