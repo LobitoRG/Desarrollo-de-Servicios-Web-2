@@ -1,2 +1,4 @@
 # Ignorando la carpeta de los modulos
 node_modules/
+# Ignorando cualquier archivo .json (Haciendo referencia a los dos archivos que crea npm)
+*.json
