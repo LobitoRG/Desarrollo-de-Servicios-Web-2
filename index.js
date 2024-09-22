@@ -1,7 +1,5 @@
 // Funcionalidad inicial
 // Antes de iniciar correr los comandos siguientes:
-// npm install express body-parser
-// npm install --save-dev mocha chai@4.2.0 supertest sinon
 
 const express = require('express')
 const bodyParser = require('body-parser')
